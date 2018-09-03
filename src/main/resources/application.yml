@@ -1,10 +1,14 @@
 #pring.social.facebook.appId=441251102950113
 #spring.social.facebook.appSecret=bee1082fe3088f42c4028450a23d2db2
-spring.jpa.hibernate.ddl-auto: create
-spring.datasource.url: jdbc:mysql://localhost:3306/voldemort?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
-spring.datasource.username: root
-spring.datasource.password: root
-spring.jpa.database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-spring.jpa.database: MYSQL
-spring.jpa.show-sql: false
+spring:
+    jpa.hibernate.ddl-auto: none
+    datasource:
+        url: jdbc:mysql://localhost:3306/voldemort?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
+        username: root
+        password: root
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        database: MYSQL
+        show-sql: false
 server.port: 8080
+security.oauth2.resource.filter-order: 3

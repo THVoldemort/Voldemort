@@ -23,7 +23,7 @@ import com.voldemort.service.UserService;
 
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserResource extends VolResource<UserDTO>{
 
 	@Autowired
@@ -50,6 +50,8 @@ public class UserResource extends VolResource<UserDTO>{
 	@Override
 	@GetMapping("/get-all")
 	public Result<Page<UserDTO>> getAll(Pageable pageable) {
+		int a = 0;
+		int b = 10/a;
 		// TODO Auto-generated method stub
 		return null;
 	}
