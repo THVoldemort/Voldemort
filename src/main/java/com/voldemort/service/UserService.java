@@ -29,6 +29,7 @@ public class UserService extends VolService<UserDTO> implements UserDetailsServi
 	
 	@Override
 	public UserDTO save(UserDTO dto) {
+		dto.setPassword(passwordEncoder.encode(dto.getPassword()));
 		User user = userRepository.save(userMapper.toEtity(dto));
 		return userMapper.toDTO(user);
 	}
@@ -56,16 +57,12 @@ public class UserService extends VolService<UserDTO> implements UserDetailsServi
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		 BCryptPasswordEncoder encoder = passwordEncoder();
 		User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }
         return user;
 	}
-	
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-	    return new BCryptPasswordEncoder();
-	}
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 }
